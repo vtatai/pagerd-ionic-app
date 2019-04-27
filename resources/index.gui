@@ -1,0 +1,94 @@
+<svg>
+  <defs>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="import" href="/mnt/sysassets/widgets_common.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/baseview_widget.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/square_button_widget.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/push_button_widget.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/scrollview_widget.gui" />
+  </defs>
+
+  <symbol id="tile-alert" focusable="false" pointer-events="visible" system-events="all">
+    <rect id="alert-background" height="100%" />
+    <textarea id="title" font-size="30" x="5" y="5" fill="white" height="100" text-overflow="ellipsis" text-anchor="start">TITLE</textarea>
+    <text id="details" x="5" y="$+20" font-size="20" fill="lightgray">Today, 3:45PM</text>
+    <use id="btn-ack" class="dialog-half-button-left" href="#square-button" fill="gold">
+        <set href="#text" attributeName="text-buffer" to="Ack"/>
+        <set href="#text" attributeName="fill" to="gold"/>
+        <set href="#text" attributeName="y" to="50"/>
+    </use>
+    <use id="btn-resolve" class="dialog-half-button-right" href="#square-button" fill="green">
+        <set href="#text" attributeName="text-buffer" to="Resolve"/>
+        <set href="#text" attributeName="fill" to="green"/>
+        <set href="#text" attributeName="y" to="50"/>
+    </use>
+  </symbol>
+
+  <textarea id="status" class="status">status message to be displayed here</textarea>
+
+  <use id="alertList" href="#scrollview" height="100%" width="100%">
+    <var id="reorder-enabled" value="0"/>
+    <var id="separator-height-bottom" value="2"/>
+
+    <use id="alert-0" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-1" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-2" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-3" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-4" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-5" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-6" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-7" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-8" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-9" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-10" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-11" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-12" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-13" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-14" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-15" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-16" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-17" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-18" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+    <use id="alert-19" href="#scrollview-item">
+      <use href="#tile-alert" />
+    </use>
+  </use>
+</svg>
