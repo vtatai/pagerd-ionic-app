@@ -1,1 +1,1 @@
-export const ALERT_COUNT = 20;
+export const INCIDENT_COUNT = 20;

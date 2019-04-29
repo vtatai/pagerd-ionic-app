@@ -8,10 +8,11 @@
     <link rel="import" href="/mnt/sysassets/widgets/scrollview_widget.gui" />
   </defs>
 
-  <symbol id="tile-alert" focusable="false" pointer-events="visible" system-events="all">
-    <rect id="alert-background" height="100%" />
+  <symbol id="tile-incident" focusable="false" pointer-events="visible" system-events="all">
+    <rect id="incident-background" height="100%" />
     <textarea id="title" font-size="30" x="5" y="5" fill="white" height="100" text-overflow="ellipsis" text-anchor="start">TITLE</textarea>
-    <text id="details" x="5" y="$+20" font-size="20" fill="lightgray">Today, 3:45PM</text>
+    <text id="status" x="5" y="$+20" font-size="20" fill="lightgray">Acknowledged</text>
+    <text id="priority" x="5" y="$" font-size="20" fill="lightgray">low</text>
     <use id="btn-ack" class="dialog-half-button-left" href="#square-button" fill="gold">
         <set href="#text" attributeName="text-buffer" to="Ack"/>
         <set href="#text" attributeName="fill" to="gold"/>
@@ -26,69 +27,69 @@
 
   <textarea id="status" class="status">status message to be displayed here</textarea>
 
-  <use id="alertList" href="#scrollview" height="100%" width="100%">
+  <use id="incidentList" href="#scrollview" height="100%" width="100%">
     <var id="reorder-enabled" value="0"/>
     <var id="separator-height-bottom" value="2"/>
 
-    <use id="alert-0" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-0" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-1" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-1" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-2" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-2" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-3" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-3" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-4" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-4" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-5" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-5" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-6" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-6" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-7" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-7" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-8" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-8" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-9" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-9" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-10" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-10" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-11" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-11" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-12" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-12" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-13" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-13" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-14" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-14" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-15" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-15" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-16" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-16" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-17" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-17" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-18" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-18" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
-    <use id="alert-19" href="#scrollview-item">
-      <use href="#tile-alert" />
+    <use id="incident-19" href="#scrollview-item">
+      <use href="#tile-incident" />
     </use>
   </use>
 </svg>

@@ -11,10 +11,10 @@ ui.updateUI("disconnected");
 //];
 //ui.updateUI("loaded", fakeData);
 
-setInterval(function() {
-    console.log("PagerD running - Connectivity status=" + messaging.peerSocket.readyState +
-        " Connected? " + (messaging.peerSocket.readyState == messaging.peerSocket.OPEN ? "YES" : "no"));
-}, 3000);
+//setInterval(function() {
+    //console.log("PagerD running - Connectivity status=" + messaging.peerSocket.readyState +
+        //" Connected? " + (messaging.peerSocket.readyState == messaging.peerSocket.OPEN ? "YES" : "no"));
+//}, 3000);
 
 messaging.peerSocket.onopen = function() {
     ui.updateUI("loading");
