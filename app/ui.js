@@ -44,14 +44,14 @@ PDUI.prototype.updateUI = function(state, incidents) {
           this.hideStatus();
           this.updateIncidentList(incidents);
       }
-  } else {
-      if (state === "loading") {
-          this.showStatus("Loading incidents...");
-      } else if (state === "disconnected") {
-          this.showStatus("Please check connection to phone and Fitbit App");
-      } else if (state === "error") {
-          this.showStatus("Unexpected error!");
-      }
+  } else if (state === "loading") {
+      this.showStatus("Loading incidents...");
+  } else if (state === "disconnected") {
+      this.showStatus("Please check connection to phone and Fitbit App");
+  } else if (state === "error") {
+      this.showStatus("Unexpected error!");
+  } else if (state === "missing_config") {
+      this.showStatus("No config in phone!");
   }
 }
 
@@ -91,6 +91,7 @@ PDUI.prototype.updateIncidentList = function(incidents) {
             sendCommand("resolve", incidentId);
         }
     }
+    this.scroll.value = 1;
 }
 
 function sendCommand(command, incidentId) {

@@ -52,27 +52,48 @@ messaging.peerSocket.onmessage = function(evt) {
 }
 
 function sendIncidentsToDevice() {
+    if (!areSettingsValid()) {
+        console.log("Invalid settings detected, notifying device.");
+        let message = {
+            "status": "missing_config"
+        };
+        if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
+            messaging.peerSocket.send(message);
+        }
+        return;
+    }
     let pdApi = createPDAPI();
     pdApi.incidents().then(function(incidents) {
         let incidentsLimited = incidents.slice(0, INCIDENT_COUNT);
         if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
             console.log("Sending incidents: " + JSON.stringify(incidents));
-            messaging.peerSocket.send(incidentsLimited);
+            let message = {
+                "status": "ok",
+                "incidents": incidentsLimited
+            };
+            messaging.peerSocket.send(message);
         }
     }).catch(function (e) {
         console.log("error " + e); 
     });
 }
 
-function createPDAPI() {
+function areSettingsValid() {
     let apiTokenJson = settingsStorage.getItem("apiToken");
     let teamIdJson = settingsStorage.getItem("teamId");
     let emailJson = settingsStorage.getItem("email");
     if (!apiTokenJson || !teamIdJson || !emailJson) {
-        throw "Application has invalid configuration";
+        return false;
     }
     let apiToken = JSON.parse(apiTokenJson).name;
     let teamId = JSON.parse(teamIdJson).name;
     let email = JSON.parse(emailJson).name;
+    return apiToken && teamId && email;
+}
+
+function createPDAPI() {
+    let apiToken = JSON.parse(settingsStorage.getItem("apiToken")).name;
+    let teamId = JSON.parse(settingsStorage.getItem("teamId")).name;
+    let email = JSON.parse(settingsStorage.getItem("email")).name;
     return new PDAPI(apiToken, teamId, email);
 }
