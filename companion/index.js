@@ -40,9 +40,12 @@ messaging.peerSocket.onmessage = function(evt) {
         let pdApi = createPDAPI();
         pdApi.resolve(evt.data["incidentId"]).then(function(response) {
             console.log("Resolve result: " + JSON.stringify(response));
+            sendIncidentsToDevice();
         }).catch(function (e) {
             console.log("error " + e); 
         });
+    } else if (evt.data["command"] == "refresh") {
+        sendIncidentsToDevice();
     } else {
         console.log("Unrecognized message from device: " + JSON.stringify(evt.data));
     }

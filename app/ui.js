@@ -3,37 +3,54 @@ import * as messaging from "messaging";
 import document from "document";
 
 export function PDUI() {
-  this.incidentList = document.getElementById("incidentList");
-  this.statusText = document.getElementById("status");
+    this.statusText = document.getElementById("statusText");
+    this.statusArea = document.getElementById("statusArea");
+    this.scroll = document.getElementById("scroll");
 
-  this.tiles = [];
-  for (let i = 0; i < INCIDENT_COUNT; i++) {
-    let tile = document.getElementById(`incident-${i}`);
-    if (tile) {
-      this.tiles.push(tile);
+    this.tiles = [];
+    for (let i = 0; i < INCIDENT_COUNT; i++) {
+        let tile = document.getElementById(`incident-${i}`);
+        if (tile) {
+            this.tiles.push(tile);
+        }
     }
-  }
+    let refreshB = this.statusArea.getElementById("refreshButton");
+    refreshB.onactivate = function(evt) {
+        console.log("Triggering refresh");
+        sendCommand("refresh");
+    };
+}
+
+PDUI.prototype.hideStatus = function() {
+    console.log("Hide status");
+    this.statusText.text = "";
+    this.statusArea.style.display = "none";
+    this.scroll.value = 1;
+}
+
+PDUI.prototype.showStatus = function(text) {
+    console.log("Show status " + text);
+    this.statusText.text = text;
+    this.statusArea.style.display = "inline";
+    this.scroll.value = 0;
 }
 
 PDUI.prototype.updateUI = function(state, incidents) {
   if (state === "loaded") {
-      this.incidentList.style.display = "inline";
       if (incidents.length == 0) {
           this.clearIncidentList();
-          this.statusText.text = "No incidents!";
+          this.showStatus("No incidents!");
       } else {
-          this.statusText.text = "";
+          this.hideStatus();
           this.updateIncidentList(incidents);
       }
   } else {
-      this.incidentList.style.display = "none";
-
       if (state === "loading") {
-          this.statusText.text = "Loading incidents ...";
+          this.showStatus("Loading incidents...");
       } else if (state === "disconnected") {
-          this.statusText.text = "Please check connection to phone and Fitbit App"
+          this.showStatus("Please check connection to phone and Fitbit App");
       } else if (state === "error") {
-          this.statusText.text = "Something terrible happened.";
+          this.showStatus("Unexpected error!");
       }
   }
 }
@@ -78,6 +95,7 @@ PDUI.prototype.updateIncidentList = function(incidents) {
 
 function sendCommand(command, incidentId) {
     if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
+        console.log("Sending command: " + command);
         var data = {
             command: command,
             incidentId: incidentId

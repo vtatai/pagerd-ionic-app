@@ -50,11 +50,11 @@ function limitString(str) {
 }
 
 PDAPI.prototype.ack = function(incidentId) {
-    this.updateStatus(incidentId, "acknowledged");
+    return this.updateStatus(incidentId, "acknowledged");
 }
 
 PDAPI.prototype.resolve = function(incidentId) {
-    this.updateStatus(incidentId, "resolved");
+    return this.updateStatus(incidentId, "resolved");
 }
 
 PDAPI.prototype.updateStatus = function(incidentId, newStatus) {
@@ -78,14 +78,6 @@ PDAPI.prototype.updateStatus = function(incidentId, newStatus) {
                 body: body
             }
         );
-        fetch(request).then(function(response) {
-            console.log("Got response from server:", response);
-            return response.json();
-        }).then(function(json) {
-            //console.log("Got JSON response from server:" + JSON.stringify(json));
-        }).catch(function (error) {
-            console.log("Fetching failed: " + JSON.stringify(error));
-            reject(error);
-        });
+        return resolve(fetch(request));
     });
 }

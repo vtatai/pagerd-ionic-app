@@ -18,7 +18,6 @@ ui.updateUI("disconnected");
 
 messaging.peerSocket.onopen = function() {
     ui.updateUI("loading");
-    messaging.peerSocket.send("refresh");
 }
 
 messaging.peerSocket.onmessage = function(evt) {

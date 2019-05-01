@@ -6,6 +6,13 @@
     <link rel="import" href="/mnt/sysassets/widgets/square_button_widget.gui" />
     <link rel="import" href="/mnt/sysassets/widgets/push_button_widget.gui" />
     <link rel="import" href="/mnt/sysassets/widgets/scrollview_widget.gui" />
+
+    <symbol id="tile-statusArea" focusable="false" pointer-events="visible" system-events="all">
+        <text id="statusText" class="status" text-anchor="middle" x="50%" y="50%"/>
+        <use id="refreshButton" x="0" y="200" height="20%" href="#push-button" fill="fb-red">
+            <set href="#text" attributeName="text-buffer" to="Refresh"/>
+        </use>
+    </symbol>
   </defs>
 
   <symbol id="tile-incident" focusable="false" pointer-events="visible" system-events="all">
@@ -25,11 +32,12 @@
     </use>
   </symbol>
 
-  <textarea id="status" class="status">status message to be displayed here</textarea>
-
-  <use id="incidentList" href="#scrollview" height="100%" width="100%">
+  <use id="scroll" href="#scrollview" height="100%" width="100%">
     <var id="reorder-enabled" value="0"/>
     <var id="separator-height-bottom" value="2"/>
+    <use id="statusArea" href="#scrollview-item">
+      <use href="#tile-statusArea" />
+    </use>
 
     <use id="incident-0" href="#scrollview-item">
       <use href="#tile-incident" />
