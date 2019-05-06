@@ -5,7 +5,7 @@
     "appDisplayName": "PagerD",
     "iconFile": "resources/icon.png",
     "wipeColor": "#f44336",
-    "requestedPermissions": [],
+    "requestedPermissions": ["access_internet"],
     "buildTargets": [
       "higgs",
       "meson",
